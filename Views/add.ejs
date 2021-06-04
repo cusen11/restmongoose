@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        margin: 10px 0;
+        height: 25px;
+        padding: 2px 5px;
+        display: block;
+    }
+</style>
+<body>
+    <form action="./add" method="POST" enctype="multipart/form-data">
+
+        <input type="text" name="name" placeholder="Name">
+        <input type="file" name="avatar" value="Hình ảnh">
+        <input type="number" name="level" placeholder="Level">
+        <button type="submit">Thêm mới</button>
+    </form>
+</body>
+</html>
