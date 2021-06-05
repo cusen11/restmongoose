@@ -79,7 +79,7 @@ app.post('/add', (req,res)=>{
                     res.json({"Kết quả": 0, "errMsg": err})
                 }
                 else{
-                    res.json({"Kết quả": 1})
+                    res.redirect("./list")
                 }
             })
         }
@@ -98,4 +98,71 @@ app.get('/list',(req,res)=>{
             res.render("list",{danhsach:data})
         }
     }) 
+}) 
+
+// edit
+
+app.get("/edit/:id", (req,res)=>{
+
+    //tìm id truyền vào
+    Mavel.findById(req.params.id, (err, char)=>{
+        if(err){
+            res.json({"kq":0, "errMsg": err})
+        }
+        else{
+            res.render("edit", {nhanvat: char}); 
+        } 
+    }) 
+})
+
+app.post("/edit",(req,res)=>{  
+    upload(req, res, function (err) { 
+        if (err instanceof multer.MulterError) {
+          console.log("A Multer error occurred when uploading."); 
+        } else if (err) {
+          console.log("An unknown error occurred when uploading." + err);
+        }else{
+            if(req.file){
+                Mavel.updateOne(
+                    //tìm gì
+                    {_id: req.body.id},
+                    // update gì
+                    {
+                        name: req.body.name,
+                        image:req.file.filename,
+                        level:req.body.level
+                    },
+                    // callback
+                    (err)=>{
+                    if(err){
+                        res.json({"Kết quả": 0, "errMsg": err})
+                    }
+                    else{
+                        res.redirect("./list")
+                    }
+                }) 
+            }
+            else{
+                Mavel.updateOne(
+                    //tìm gì
+                    {_id: req.body.id},
+                    // update gì
+                    {
+                        name: req.body.name, 
+                        level:req.body.level
+                    },
+                    // callback
+                    (err)=>{
+                    if(err){
+                        res.json({"Kết quả": 0, "errMsg": err})
+                    }
+                    else{
+                        res.redirect("./list")
+                    }
+                }) 
+            }
+             
+        }
+
+    }); 
 })

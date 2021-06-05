@@ -6,11 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    img{
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    div{
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        
+    }
+    .item{
+        width: 200px;
+        margin: 10px; 
+        border: 1px solid #000;
+        border-radius: 10px;
+        padding: 10px       
+    }
+    .item > *:not(a){
+        width: 100%;
+        margin: 3px 0;
+    }
+</style>
 <body>
-    <% danhsach.forEach(function(mavel){ %>
-        
-        <h1><%- mavel.name %></h1>
-        
-    <%});%>
+    <a href="/add">Thêm mới</a>
+    <div class="list">
+        <% danhsach.forEach(function(mavel){ %>
+            <div class="item">
+                 <img width="200" height="200" src="./uploads/<%- mavel.image %>" alt=""> 
+                 <h3><%- mavel.name %></h3>  
+                 <p>Level: <%- mavel.level %></p> 
+                 <a href="./edit/<%- mavel.id %>"> Sửa </a> | <a href="./delete/<%- mavel.id %>">Xóa</a>  
+            </div>
+         <%});%>
+    </div>
+    
+    
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        margin: 10px 0;
+        height: 25px;
+        padding: 2px 5px;
+        display: block;
+    }
+    img{
+        object-fit: cover;
+        border-radius: 50%;
+    }
+</style>
+<body>
+    <form action="../edit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%- nhanvat.id %>"> 
+        <input type="text" name="name" value="<%- nhanvat.name %>" placeholder="Name">
+        <img width="200px" src="../uploads/<%- nhanvat.image %>" alt="">
+        <input type="file" name="avatar" value="Hình ảnh">
+        <input type="number" name="level" value="<%- nhanvat.level %>" placeholder="Level">
+        <button type="submit">Sửa</button>
+    </form>
+</body>
+</html>
