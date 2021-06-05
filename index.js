@@ -166,3 +166,18 @@ app.post("/edit",(req,res)=>{
 
     }); 
 })
+
+//delete
+
+app.get("/delete/:id",(req,res)=>{ 
+    Mavel.deleteOne(
+        {_id: req.params.id},
+        (err)=>{
+        if(err){
+            res.json({"Kết quả": 0, "errMsg": err})
+        }
+        else{
+            res.redirect("../list")
+        }
+    }); 
+})

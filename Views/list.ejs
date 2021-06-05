@@ -37,7 +37,8 @@
                  <img width="200" height="200" src="./uploads/<%- mavel.image %>" alt=""> 
                  <h3><%- mavel.name %></h3>  
                  <p>Level: <%- mavel.level %></p> 
-                 <a href="./edit/<%- mavel.id %>"> Sửa </a> | <a href="./delete/<%- mavel.id %>">Xóa</a>  
+                 <a href="./edit/<%- mavel.id %>"> Sửa </a> | 
+                 <a onClick="return confirm('bạn có muốn xóa <%- mavel.name %> không?')"  href="./delete/<%- mavel.id %>">Xóa</a>  
             </div>
          <%});%>
     </div>
